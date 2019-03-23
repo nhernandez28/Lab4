@@ -3,7 +3,7 @@ CS2302
 Lab4
 Purpose: learn how to work with arrays and B-trees
 Created on Wed Feb 25, 2019
-Last modified  Mar , 2019
+Last modified  Mar 23, 2019
 Olac Fuentes
 @author: Nancy Hernandez
 """
@@ -137,12 +137,15 @@ def height(T):
 # NUMBER TWO
 def BTreeToArray(T, L):
     if T.isLeaf:
+        #goes through each item and adds it to array
         for i in range(len(T.item)):
             L.append(T.item[i])
     else:
+        #goes through each item and adds to array
         for c in range(len(T.item)):
             BTreeToArray(T.child[c], L)
             L.append(T.item[c])
+        #Gets last element that is skipped
         BTreeToArray(T.child[-1], L)
     return L
 
